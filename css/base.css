@@ -22,12 +22,16 @@ body {
 }
 
 /* FONT */
-a {
+a, a:visited{
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bolder;
     color: #2440F2;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+a img{
+    height: 5vh;
 }
 
 h1, h2, h3, h4, h5 {
@@ -56,7 +60,7 @@ h2 {
     gap: 2vh;
 }
 
-.form input{
+input{
     width: 80%;
     height: 5vh;
     font-size: 1.1em;
@@ -65,10 +69,15 @@ h2 {
     border-radius: 2.5vh;
     padding-left: 2.5vh;
     padding-right: 2.5vh;
+    outline: none;
 }
 
-.form input::placeholder{
+input::placeholder{
     color: black;
+}
+
+input:focus{
+    border-color: #2440F2;
 }
 
 .form .button{
@@ -84,8 +93,4 @@ h2 {
     align-self: flex-start;
     margin-left: 5vh;
     color: black;
-}
-
-.form a img{
-    height: 5vh;
 }

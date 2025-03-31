@@ -1,0 +1,17 @@
+.menu {
+    display: none;
+}
+
+.profile {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 2.5vh;
+    background-color: grey;
+    padding-top: 5vh;
+    display: flex;
+    justify-content: center;
+}
+
+.profile img {
+    height: 100%;
+}

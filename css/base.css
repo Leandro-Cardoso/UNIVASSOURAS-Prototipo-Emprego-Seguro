@@ -77,6 +77,11 @@ input:focus {
     border-color: #2440F2;
 }
 
+.form .required-span {
+    color: red;
+    display: none;
+}
+
 .form .button {
     background-color: #2440F2;
     color: white;

@@ -20,7 +20,9 @@ function createTable(name) {
 function createTables(tables) {
     for (n in tables) {
         if (!isTable(tables[n])) {
+            localStorage.clear();
             createTable(tables[n]);
+            
             console.log("Tabela:", tables[n], "criada...");
         }
         else {
@@ -61,12 +63,32 @@ function insertElement(element, table) {
 // todo: remover elemento. (removeElement)
 // todo: alterar elemento. (setElement)
 
+// CHECKS:
+function isUserEmail(email) {
+    const users = getTable("users");
+
+    if (users.length > 0) {
+        for (let i = 0; i < users.length; i++) {
+            let user = users[i];
+
+            if (user.email === email) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    else {
+        return false;
+    }
+}
+
 // Criar tabelas:
-tables = ["users", "services", "chats"];
+tables = ["users", "services", "chats", "user"];
 createTables(tables);
 
 // TESTES:
-element = {"username" : "leandro", "password" : "123456"};
+//element = {"username" : "leandro", "password" : "123456"};
 //insertElement(element, "users");
 
 //localStorage.clear();

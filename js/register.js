@@ -53,3 +53,13 @@ function lastnameValidate(){
         removeError(i);
     }
 }
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    emailValidade();
+    passwordValidate();
+    password2Validate();
+    nameValidate();
+    lastnameValidate();
+});

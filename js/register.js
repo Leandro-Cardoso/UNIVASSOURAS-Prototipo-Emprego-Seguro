@@ -1,3 +1,5 @@
+localStorage.setItem("user", JSON.stringify([]));
+
 // VALIDATION:
 function emailValidate(){
     const i = 0;
@@ -98,7 +100,7 @@ function submit() {
         window.location.href = "search.html";
     }
     else {
-        // MOSTRAR ERRO EMAIL JA EXISTE
+        // todo: MOSTRAR ERRO EMAIL JA EXISTE
         console.log("ERROR: Email ja cadastrado !!!")
     }
 }

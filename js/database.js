@@ -20,7 +20,6 @@ function createTable(name) {
 function createTables(tables) {
     for (n in tables) {
         if (!isTable(tables[n])) {
-            localStorage.clear();
             createTable(tables[n]);
             
             console.log("Tabela:", tables[n], "criada...");
@@ -36,32 +35,51 @@ function getTable(name) {
 }
 
 // ELEMENTS:
-function isElement(element, table) {
+function getElement(value, key, table) {
     let elements = getTable(table);
 
-    if (element in elements) {
-        return true;
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i][key] === value) {
+            return i;
+        }
     }
-    else {
-        return false;
-    }
+
+    return null;
 }
 
-function insertElement(element, table) {
-    if (!isElement(element, table)) {
-        let elements = getTable(table);
+function insertElement(element, key, table) {
+    let elements = getTable(table);
 
+    if (getElement(element[key], key, table) === null) {
         elements.push(element);
-        localStorage.setItem(table, JSON.stringify(element));
-        console.log("Element:", JSON.stringify(element), "inserido em", table, "...");
-    }
-    else {
-        console.error("Error:", JSON.stringify(element), "ja existe !!!");
+        localStorage.setItem(table, JSON.stringify(elements));
+        console.log("Element:", JSON.stringify(element[key]), "inserido em", table, "...");
     }
 }
 
-// todo: remover elemento. (removeElement)
-// todo: alterar elemento. (setElement)
+function removeElement(element, key, table) {
+    let elements = getTable(table);
+
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i][key] === element[key]) {
+            elements.splice(i, 1);
+            localStorage.setItem(table, JSON.stringify(elements));
+            break;
+        }
+    }
+}
+
+function setElement(element, key, table) {
+    let elements = getTable(table);
+
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i][key] === element[key]) {
+            elements[i] = element;
+            localStorage.setItem(table, JSON.stringify(elements));
+            break;
+        }
+    }
+}
 
 // CHECKS:
 function isUserEmail(email) {

@@ -1,4 +1,5 @@
-function emailValidade(){
+// VALIDATION:
+function emailValidate(){
     const i = 0;
 
     if (!emailRegex.test(inputs[i].value)){
@@ -54,12 +55,50 @@ function lastnameValidate(){
     }
 }
 
+// SUBMIT:
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+    hasError = false;
 
-    emailValidade();
+    emailValidate();
     passwordValidate();
     password2Validate();
     nameValidate();
     lastnameValidate();
+
+    if (!hasError) {
+        submit();
+    }
+    else {
+        console.log("Cadastro nao foi realizado...")
+    }
 });
+
+function submit() {
+    const email = inputs[0].value;
+
+    if (!isUserEmail(email)) {
+        const password = inputs[1].value;
+        const name = inputs[3].value;
+        const lastname = inputs[4].value;
+
+        const user = {
+            "email" : email,
+            "password" : password,
+            "name" : name,
+            "lastname" : lastname
+        };
+
+        insertElement(user, "email", "users");
+
+        localStorage.setItem("user", JSON.stringify([]));
+
+        insertElement(user, "email", "user");
+
+        window.location.href = "search.html";
+    }
+    else {
+        // MOSTRAR ERRO EMAIL JA EXISTE
+        console.log("ERROR: Email ja cadastrado !!!")
+    }
+}

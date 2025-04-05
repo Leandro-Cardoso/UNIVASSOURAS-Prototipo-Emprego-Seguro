@@ -100,7 +100,8 @@ function submit() {
         window.location.href = "search.html";
     }
     else {
-        // todo: MOSTRAR ERRO EMAIL JA EXISTE
+        spans[5].style.display = 'block';
+        
         console.log("ERROR: Email ja cadastrado !!!")
     }
 }

@@ -16,9 +16,6 @@ function submit() {
     for (let i = 0; i < users.length; i++) {
         if (users[i].email === email) {
             if (users[i].password === password) {
-                hasError = false;
-                errorCounter = 0;
-                
                 insertElement(users[i], "email", "user");
 
                 window.location.href = "search.html";
@@ -28,7 +25,7 @@ function submit() {
         }
     }
 
-    setError(0);
+    spans[0].style.display = 'block';
 
     inputs[0].value = "";
     inputs[1].value = "";
